@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/iconfont.css" />
   <link rel="stylesheet" href="css/main.css" />
-  <script src="./js/lib/jquery-1.12.4.min.js"></script>
+  <script src="./js/lib/jquery.min.js"></script>
 </head>
 
 <body>
@@ -152,17 +152,17 @@
     $(function () {
       user.getInfo(function (res) {
         // console.log(res);
-        if (res.code === 200) {
+        if (res.code == 200) {
           $('#userName').html(res.data.nickname);
           $('#userImg').attr('src', res.data.user_pic);
         }
-      });
+      })
     });
     // 给按钮添加点击事件
     // 1.调用 退出功能
     $('#btnLogout').click(function () {
       if (window.confirm('你确定要退出吗？')) {
-        $.post('http://localhost:8000/admin/logout', function (res) {
+        user.logout(function (res) {
           // console.log(res);
           window.location.href = 'login.html';
         })

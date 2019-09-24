@@ -54,10 +54,10 @@
   </div>
 
 
-  <script src="./js/lib/jquery-1.12.4.min.js"></script>
+  <script src="./js/lib/jquery.min.js"></script>
   <script src="./js/bootstrap/js/bootstrap.min.js"></script>
-  <!-- <script src="./js/utils/config.js"></script>
-  <script src="./js/utils/user.js"></script> -->
+  <script src="./js/utils/config.js"></script>
+  <script src="./js/utils/user.js"></script>
 
   <script>
     // 思路
@@ -71,7 +71,7 @@
       var userName = $('#userName').val();
       var password = $('#password').val();
       // console.log(userName);
-      $.post('http://localhost:8000/admin/login', { user_name: userName, password: password }, function (res) {
+      user.login(userName, password, function (res) {
         if (userName == '' || password == '') {
           $('#pResult').html('用户名或密码不能为空！');
           $('.modal').modal('show');
@@ -82,9 +82,6 @@
           $('#pResult').html(res.msg);
           $('.modal').modal('show');
         }
-
-
-
       })
     })
 
